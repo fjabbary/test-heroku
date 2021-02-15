@@ -10,6 +10,27 @@ app.use(cors())
 const videoList = require('./data/videoList.json')
 const videoDetails = require('./data/videoDetails')
 
+
+
+
+
+const whitelist = ['http://localhost:3000', 'http://localhost:8080', 'https://shrouded-journey-38552.herokuapp.com']
+const corsOptions = {
+    origin: function (origin, callback) {
+        console.log("** Origin of request " + origin)
+        if (whitelist.indexOf(origin) !== -1 || !origin) {
+            console.log("Origin acceptable")
+            callback(null, true)
+        } else {
+            console.log("Origin rejected")
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
+}
+
+
+
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -44,6 +65,18 @@ app.delete('/delete', (req, res) => {
     foundVideo.comments.splice(foundCommentsIndex, 1)
     res.json(foundVideo.comments)
 })
+
+
+const path = require('path');
+if (process.env.NODE_ENV === 'production') {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, 'client/build')));
+    // Handle React routing, return all requests to React app
+    app.get('*', function (req, res) {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+}
+
 
 app.listen(PORT, () => {
     console.log(`App is running at ports ${PORT}`)
