@@ -1,0 +1,13 @@
+.content {
+    display: flex;
+    width: 1000px;
+    margin: auto;
+
+    &__left {
+        width: 66.6%;
+    }
+
+    &__right {
+        width: 33.3%;
+    }
+}

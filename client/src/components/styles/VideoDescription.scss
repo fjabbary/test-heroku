@@ -1,0 +1,39 @@
+.videoDescription {
+    &__details {
+        display: flex;
+        border-bottom: 2px solid #aaa;
+        padding-right: 20px;
+        padding-bottom: 20px;
+
+        &--left {
+            width: 50%;
+
+        }
+
+        &--left span:first-child{
+            margin-right: 20px;
+        }
+
+        &--left span:nth-child(2) {
+            color: #aaa;
+        }
+
+        &--right {
+            width: 50%;
+            text-align: right;
+        }
+
+        &--right img {
+            vertical-align: middle;
+        }
+
+        &--rightViews {
+            margin-right: 40px
+        }
+    }
+
+    p {
+        width: 80%;
+        padding-top: 20px;
+    }
+}

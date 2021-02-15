@@ -1,0 +1,31 @@
+.videoItem {
+    display: flex;
+    margin-top: 20px;
+    height: 100px;
+
+    &__left {
+        width: 40%;
+    }
+
+    &__right {
+        width: 60%;
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &--title {
+            margin: 0;
+        }
+
+        &--publisher {
+            color: rgb(117, 116, 116);
+            margin: 0;
+        }
+    }
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
